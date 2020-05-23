@@ -14,7 +14,7 @@ export class DocumentComponent implements OnInit {
   throttle = 300;
   scrollDistance = 2;
   scrollUpDistance = 1.5;
-  size = 100;
+  size = 15;
   offset = 0;
   page: PageDto;
 
@@ -38,7 +38,6 @@ export class DocumentComponent implements OnInit {
           this.array.splice(0, this.size);
         }
       });
-      console.log(this.array);
     });
   }
 
@@ -50,31 +49,19 @@ export class DocumentComponent implements OnInit {
           this.array.splice(this.array.length - this.size, this.size);
         }
       });
-      console.log(this.array);
     });
   }
 
-  appendItems() {
+  onScrollDown() {
+    this.page.offset += 1;
     this.addItems();
   }
 
-  prependItems() {
-    this.shiftItems();
-  }
-
-  onScrollDown(ev) {
-    this.page.offset += 1;
-    console.log('down stuff', this.size, this.page.offset, ev);
-    this.appendItems();
-  }
-
-  onUp(ev) {
-    console.log('uuuuuup');
+  onUp() {
     if (this.page.offset > 0) {
       this.page.offset -= 1;
-      console.log('up stuff', this.page.pageSize, this.page.offset, ev);
 
-      this.prependItems();
+      this.shiftItems();
     }
   }
 
