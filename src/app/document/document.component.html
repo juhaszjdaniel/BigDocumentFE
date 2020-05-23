@@ -8,8 +8,9 @@
      [infiniteScrollThrottle]="throttle"
      (scrolled)="onScrollDown($event)"
      (scrolledUp)="onUp($event)"
-     [scrollWindow]="false">
+     [scrollWindow]="false"
+     [alwaysCallback]="true">
   <p *ngFor="let i of array">
-    {{ i }}
+    {{ i.document }}
   </p>
 </div>
