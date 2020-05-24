@@ -1,3 +1,19 @@
+.title-container {
+  background: #3f51b5;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: unset;
+}
+
 .title {
-  height: 20%;
+  align-self: center;
+}
+
+.array-size {
+  color: red;
+  height: 10%;
+  width: 10%;
+  margin: 16px;
+  align-self: flex-end
 }

@@ -1,6 +1,9 @@
-<div class="main-container d-flex flex-column">
-  <div class="jumbotron text-center title">
-      <h2>Welcome to Big Document Reader</h2>
+<div class="main-container flex-container flex-column">
+  <div class="jumbotron text-center title-container">
+    <div class="title mat-h2">Welcome to Big Document Reader</div>
+    <div class="mat-card array-size">
+      {{arraySize}}
+    </div>
   </div>
-  <app-document class="document"></app-document>
+  <app-document class="document" (arraySize)="onArraySizeChange($event)"></app-document>
 </div>

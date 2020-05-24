@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {BigDocumentService} from '../big-document.service';
 import {PageDto} from './page.dto';
 import {DocumentDto} from './document.dto';
@@ -10,6 +10,7 @@ import {DocumentDto} from './document.dto';
 })
 export class DocumentComponent implements OnInit {
 
+  @Output() arraySize = new EventEmitter<number>();
   array: Array<DocumentDto> = [];
   throttle = 300;
   scrollDistance = 2;
@@ -23,11 +24,7 @@ export class DocumentComponent implements OnInit {
 
   ngOnInit() {
     this.page = new PageDto(this.offset, this.size);
-    this.getDocumentList(this.page);
-  }
-
-  getDocumentList(page: PageDto): void {
-    this.service.getPagedList(page).subscribe(list => list.forEach(document => this.array.push(document)));
+    this.addItems();
   }
 
   addItems() {
@@ -38,6 +35,8 @@ export class DocumentComponent implements OnInit {
           this.array.splice(0, this.size);
         }
       });
+    }, error => null, () => {
+      this.arraySize.emit(this.array.length);
     });
   }
 
@@ -49,6 +48,8 @@ export class DocumentComponent implements OnInit {
           this.array.splice(this.array.length - this.size, this.size);
         }
       });
+    }, error => null, () => {
+      this.arraySize.emit(this.array.length);
     });
   }
 

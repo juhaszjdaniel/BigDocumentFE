@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'big-document-fe';
+  arraySize: number;
+
+  onArraySizeChange(size: number){
+    this.arraySize = size;
+    console.log(this.arraySize);
+  }
 }

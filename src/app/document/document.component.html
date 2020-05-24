@@ -1,10 +1,13 @@
+<!--<div>-->
+<!--  {{array.length}}-->
+<!--</div>-->
 <div class="scroll"
      infinite-scroll
      [infiniteScrollDistance]="scrollDistance"
      [infiniteScrollUpDistance]="scrollUpDistance"
      [infiniteScrollThrottle]="throttle"
-     (scrolled)="onScrollDown($event)"
-     (scrolledUp)="onUp($event)"
+     (scrolled)="onScrollDown()"
+     (scrolledUp)="onUp()"
      [scrollWindow]="false"
      [alwaysCallback]="true">
   <div *ngFor="let i of array">
